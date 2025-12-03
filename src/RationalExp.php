@@ -13,8 +13,7 @@ final readonly class RationalExp implements JsonSerializable
         private int $significand,
         private int $denominator = 1,
         private int $exponent = 0,
-    ) {
-    }
+    ) {}
 
     public function mul(self $that): self
     {
@@ -91,8 +90,7 @@ final readonly class RationalExp implements JsonSerializable
         int $significand,
         int $exponent = 0,
         int $denominator = 1,
-    ): self
-    {
+    ): self {
         if ($denominator === 0) {
             throw new DivisionByZeroError('Denominator cannot be zero.');
         }
@@ -104,9 +102,8 @@ final readonly class RationalExp implements JsonSerializable
         int|float $number,
         int $digits = -1,
         int $roundMode = PHP_ROUND_HALF_UP,
-    ): self
-    {
-        if (is_int($number)) {
+    ): self {
+        if (\is_int($number)) {
             return self::normalize($number, 1, 0);
         }
 
@@ -174,12 +171,11 @@ final readonly class RationalExp implements JsonSerializable
         return self::gcd(($b - $a) >> 1, $a);
     }
 
-    static private function normalize(
+    private static function normalize(
         int $significand,
         int $denominator,
         int $exponent
-    ): self
-    {
+    ): self {
         if ($significand === 0) {
             return new self($significand);
         }
@@ -188,12 +184,12 @@ final readonly class RationalExp implements JsonSerializable
         $significand = intdiv($significand, $gcd);
         $denominator = intdiv($denominator, $gcd);
 
-        while ($significand - ($ts = (int)($significand * .1)) * 10 === 0) {
+        while ($significand - ($ts = (int) ($significand * .1)) * 10 === 0) {
             $significand = $ts;
             $exponent++;
         }
 
-        while ($denominator - ($td = (int)($denominator * .1)) * 10 === 0) {
+        while ($denominator - ($td = (int) ($denominator * .1)) * 10 === 0) {
             $denominator = $td;
             $exponent--;
         }
