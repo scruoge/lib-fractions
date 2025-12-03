@@ -1,0 +1,30 @@
+{
+  "name": "scruoge/lib-fractions",
+  "description": "Library for precision math calculations based on natural fractions (operates on rational domain)",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey N. Kruk",
+      "email": "scruoge@gmail.com"
+    }
+  ],
+  "version": "1.0.0",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Scruoge\\Fractions\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Scruoge\\Fractions\\Test\\": "test/"
+    }
+  }
+}
